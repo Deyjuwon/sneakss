@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+}
+
+.logo {
+    font-family: "Eagle Lake", serif;
+    font-weight: 400;
+    font-style: normal;
+}
