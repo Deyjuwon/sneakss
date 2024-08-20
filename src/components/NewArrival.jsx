@@ -9,7 +9,7 @@ import pro8 from '../assets/products/pro8.jpg'
 
 const NewArrival = () => {
   return (
-    <div className="p-5">
+    <div className="px-5 py-10">
         <h1 className="text-xl font-bold py-4">New Arrivals</h1>
         <div className="flex w-full gap-10 overflow-x-auto">
             <NewProductCard 

@@ -1,5 +1,6 @@
 import CollectionHome from "../components/CollectionHome"
 import DiscountSection from "../components/DiscountSection"
+import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
 import NewArrival from "../components/NewArrival"
@@ -15,7 +16,7 @@ const Home = () => {
         <DiscountSection />
         <NewArrival />
         <NewsletterHome />
-      
+        <Footer bgColor='white' textColor='black' />
     </div>
   )
 }
