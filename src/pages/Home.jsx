@@ -10,7 +10,7 @@ import NewsletterHome from "../components/NewsletterHome"
 const Home = () => {
   return (
     <div>
-        <Header />
+        <Header showSearchBar={true} />
         <Hero />
         <CollectionHome />
         <DiscountSection />
