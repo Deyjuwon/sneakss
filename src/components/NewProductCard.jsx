@@ -1,3 +1,6 @@
+
+
+// eslint-disable-next-line react/prop-types
 const NewProductCard = ({ shoeName, shoeColor, shoeGender, shoePrice, shoeImg }) => {
   return (
     <div className="p-4 cursor-pointer min-h-80 flex flex-col gap-3 text-sm border border-transparent hover:border-primaryRed">

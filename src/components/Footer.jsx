@@ -6,8 +6,8 @@ import { FaFacebookF } from "react-icons/fa";
 
 const Footer = ({bgColor, textColor}) => {
   return (
-    <footer className={`text-sm flex py-12  justify-around bg-${bgColor} text-${textColor}  flex-wrap`}>
-        <div className="w-1/2 lg:w-auto  flex flex-col gap-5 pl-4">
+    <footer className={`text-xs md:text-sm  flex py-12  justify-around bg-${bgColor} text-${textColor}  flex-wrap`}>
+        <div className="w-1/2 lg:w-auto  flex flex-col gap-5  items-center">
             <p className="font-bold">ABOUT US</p>
             <div className="flex flex-col gap-2">
                 <a href="">Our Stores</a>

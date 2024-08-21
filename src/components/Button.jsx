@@ -2,7 +2,7 @@
 // eslint-disable-next-line react/prop-types
 const Button = ({title}) => {
   return (
-    <button className="h-12 rounded-lg w-36 flex justify-center font-bold items-center text-sm bg-primaryRed text-white ">{title}</button>
+    <button className="h-12  w-36 flex justify-center font-semibold items-center text-sm bg-primaryRed text-white ">{title}</button>
   )
 }
 

@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className='relative w-full min-w-full'>
       <div className='w-full'>
-        <img src={heroImg} className='h-screen w-full object-cover' alt="" />
+        <img src={heroImg} className='h-screen w-full object-cover brightness-50 md:brightness-75' alt="" />
       </div>
 
       <div className='flex flex-col gap-4 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:top-2/3 lg:left-72'>
