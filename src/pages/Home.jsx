@@ -16,7 +16,7 @@ const Home = () => {
         <DiscountSection />
         <NewArrival />
         <NewsletterHome />
-        <Footer bgColor='white' textColor='black' />
+        {/* <Footer bgColor='white' textColor='black' /> */}
     </div>
   )
 }

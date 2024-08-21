@@ -6,8 +6,8 @@ import Footer from "../components/Footer";
 const Login = () => {
   return (
     <div>
-        <Header />
-        <div className="flex flex-col mt-32 mb-10 p-4 justify-center items-center gap-12">
+        {/* <Header /> */}
+        <div className="flex flex-col mt-32 mb-12 p-4 justify-center items-center gap-12">
             <p className="text-5xl font-normal">MY SNEAKS ACCOUNT</p>
             <div className="flex flex-col items-center justify-center gap-5">
                 <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-base border border-gray-400" >
