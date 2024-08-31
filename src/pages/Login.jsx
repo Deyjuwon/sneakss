@@ -3,28 +3,76 @@ import Header from "../components/Header"
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { GoogleAuthProvider, signInWithPopup, OAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebaseConfig';  
 
 
 const Login = () => {
     const [showDetails, setShowDetails] = useState(false);
+    useEffect(() => {
+      window.scrollTo(0,0);
+  }, [])
   
     const handleContinueClick = () => {
       setShowDetails(true);
     };
+
+const googleProvider = new GoogleAuthProvider();
+
+const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    console.log(result.user);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+const appleProvider = new OAuthProvider('apple.com');
+
+const signInWithApple = async () => {
+  try {
+    const result = await signInWithPopup(auth, appleProvider);
+    console.log(result.user);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Register new user
+const registerWithEmail = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+// Sign in existing user
+const signInWithEmail = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log(userCredential.user);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
   
     return (
-      <div>
+      <div >
         <Header showSearchBar={false} />
-        <div className="flex flex-col mt-24 md:mt-32 mb-12 p-4 justify-center items-center gap-12">
+        <div className="flex flex-col  mb-8 mt-20 p-4 justify-center items-center gap-12 min-h-screen">
           <p className="text-3xl md:text-5xl font-light">MY SNEAKS ACCOUNT</p>
           <div className="flex flex-col items-center justify-center gap-5">
-            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400">
+            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400" onClick={signInWithGoogle}>
               <span><FcGoogle size={25} /></span>
               <p>CONTINUE WITH GOOGLE</p>
             </button>
   
-            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400">
+            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400" onClick={signInWithApple}>
               <span><FaApple size={25} /></span>
               <p>CONTINUE WITH APPLE</p>
             </button>
@@ -95,6 +143,7 @@ const Login = () => {
                 <button
                   type="submit"
                   className="h-12 w-80 justify-center items-center gap-4 font-semibold text-sm md:text-base bg-primaryRed text-white"
+                  onClick={() => signInWithEmail('email@example.com', 'password')}
                 >
                   CREATE
                 </button>

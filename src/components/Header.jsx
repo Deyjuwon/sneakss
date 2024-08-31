@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import { IoCartOutline, IoSearch } from "react-icons/io5";
 import { MdPersonOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { CiMenuFries } from "react-icons/ci";
 
 const Header = ({ showSearchBar }) => {
   return (
