@@ -5,6 +5,7 @@ import { auth, provider } from '../../firebaseConfig';
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
+import Footer from '../components/Footer';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className='pt-48'>
+    <div className='h-screen flex flex-col justify-between pt-40'>
       <Header showSearchBar={false} />
       <div className='flex flex-col gap-16 justify-center items-center'>
         <p className='text-[40px] font-normal'>MY SNEAKS ACCOUNT</p>
@@ -37,6 +38,7 @@ const Login = () => {
           <p>CONTINUE WITH GOOGLE</p>
         </button>
       </div>
+      <Footer bgColor='black' textColor='white' />
     </div>
   );
 }

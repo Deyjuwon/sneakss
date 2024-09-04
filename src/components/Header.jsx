@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
 import { IoCartOutline, IoSearch } from "react-icons/io5";
 import { MdPersonOutline } from "react-icons/md";
