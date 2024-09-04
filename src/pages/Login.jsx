@@ -1,160 +1,44 @@
-/* eslint-disable react/no-unescaped-entities */
-import Header from "../components/Header"
+import { useContext } from 'react';
+import Header from '../components/Header';
 import { FcGoogle } from "react-icons/fc";
-import { FaApple } from "react-icons/fa";
-import Footer from "../components/Footer";
-import { useState, useEffect } from "react";
-import { GoogleAuthProvider, signInWithPopup, OAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebaseConfig';  
-
+import { auth, provider } from '../../firebaseConfig';
+import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 
 const Login = () => {
-    const [showDetails, setShowDetails] = useState(false);
-    useEffect(() => {
-      window.scrollTo(0,0);
-  }, [])
-  
-    const handleContinueClick = () => {
-      setShowDetails(true);
-    };
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
-const googleProvider = new GoogleAuthProvider();
-
-const signInWithGoogle = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    console.log(result.user);
-  } catch (error) {
-    console.error(error.message);
-  }
-};
-
-const appleProvider = new OAuthProvider('apple.com');
-
-const signInWithApple = async () => {
-  try {
-    const result = await signInWithPopup(auth, appleProvider);
-    console.log(result.user);
-  } catch (error) {
-    console.error(error.message);
-  }
-};
-
-// Register new user
-const registerWithEmail = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(userCredential.user);
-  } catch (error) {
-    console.error(error.message);
-  }
-};
-
-// Sign in existing user
-const signInWithEmail = async (email, password) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log(userCredential.user);
-  } catch (error) {
-    console.error(error.message);
-  }
-};
-
-  
-    return (
-      <div >
-        <Header showSearchBar={false} />
-        <div className="flex flex-col  mb-8 mt-20 p-4 justify-center items-center gap-12 min-h-screen">
-          <p className="text-3xl md:text-5xl font-light">MY SNEAKS ACCOUNT</p>
-          <div className="flex flex-col items-center justify-center gap-5">
-            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400" onClick={signInWithGoogle}>
-              <span><FcGoogle size={25} /></span>
-              <p>CONTINUE WITH GOOGLE</p>
-            </button>
-  
-            <button className="h-12 w-80 flex justify-center items-center gap-4 font-semibold text-sm md:text-base border border-gray-400" onClick={signInWithApple}>
-              <span><FaApple size={25} /></span>
-              <p>CONTINUE WITH APPLE</p>
-            </button>
-  
-            <p className="text-base">OR</p>
-            <p className="text-2xl text-center md:text-4xl font-light">CONTINUE WITH YOUR EMAIL ADDRESS</p>
-  
-            
-              <div className="flex flex-col gap-5">
-                <input
-                  className="h-12 w-80 border border-gray-400 pl-4 text-sm outline-primaryRed"
-                  required
-                  placeholder="EMAIL*"
-                  type="text"
-                />
-                {!showDetails && (
-                <button
-                  type="submit"
-                  className="h-12 w-80 justify-center items-center gap-4 font-semibold text-sm md:text-base bg-primaryRed text-white"
-                  onClick={handleContinueClick}
-                >
-                  CONTINUE
-                </button>)}
-              </div>
-            
-  
-            {showDetails && (
-              <div id="details" className="flex flex-col items-center justify-center gap-8">
-                <input
-                  type="password"
-                  placeholder="CREATE PASSWORD*"
-                  className="h-12 w-80 border border-gray-400 pl-4 text-sm outline-primaryRed"
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="FIRST NAME*"
-                  className="h-12 w-80 border border-gray-400 pl-4 text-sm outline-primaryRed"
-                />
-                <input
-                  type="text"
-                  placeholder="LAST NAME*"
-                  className="h-12 w-80 border border-gray-400 pl-4 text-sm outline-primaryRed"
-                />
-                <div className="w-80">
-                  <p className="text-sm pb-2">DATE OF BIRTH*</p>
-                  <div className="flex">
-                    <input
-                      type="text"
-                      placeholder="MONTH*"
-                      className="h-12 w-full border border-gray-400 pl-4 text-sm outline-primaryRed"
-                    />
-                    <input
-                      type="text"
-                      placeholder="DAY*"
-                      className="h-12 w-full border border-gray-400 pl-4 text-sm outline-primaryRed"
-                    />
-                    <input
-                      type="text"
-                      placeholder="YEAR*"
-                      className="h-12 w-full border border-gray-400 pl-4 text-sm outline-primaryRed"
-                    />
-                  </div>
-                </div>
-                <p className="w-80 text-sm leading-8">
-                  By clicking "CREATE", you confirm that you agree to our Terms of Use, that you have acknowledged our privacy policy, and that you want to create your SNEAKSS profile.
-                </p>
-                <button
-                  type="submit"
-                  className="h-12 w-80 justify-center items-center gap-4 font-semibold text-sm md:text-base bg-primaryRed text-white"
-                  onClick={() => signInWithEmail('email@example.com', 'password')}
-                >
-                  CREATE
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-        <Footer bgColor="black" textColor="white" />
-      </div>
-    );
+  const handleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        // Store the user info in the context
+        setUser(user);
+        console.log('Login successful', user);
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error('Login failed', error);
+      });
   };
-  
-  export default Login;
-  
+
+  return (
+    <div className='pt-48'>
+      <Header showSearchBar={false} />
+      <div className='flex flex-col gap-16 justify-center items-center'>
+        <p className='text-[40px] font-normal'>MY SNEAKS ACCOUNT</p>
+        <button 
+          className='h-20 w-[400px] bg-[#ff5f5f7] text-[#800000] border border-[#800000] 
+          text-base font-semibold hover:bg-[#800000] hover:text-[#f5f5f7] flex justify-center items-center gap-4' 
+          onClick={handleLogin}>
+          <FcGoogle size={25} />
+          <p>CONTINUE WITH GOOGLE</p>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
