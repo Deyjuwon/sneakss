@@ -22,14 +22,14 @@ const NewArrival = () => {
             <NewProductCard 
                 shoeName='New Balance 9060' 
                 shoeGender='Men' 
-                shoePrice='₦80,000' 
+                shoePrice='₦75,000' 
                 shoeImg={pro1} 
                 shoeColor='Washed blue' 
             />
             <NewProductCard 
                 shoeName='New Balance 9060' 
                 shoeGender='Men' 
-                shoePrice='₦80,000' 
+                shoePrice='₦70,000' 
                 shoeImg={pro2} 
                 shoeColor='White' 
             />

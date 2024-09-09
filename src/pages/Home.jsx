@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import CollectionHome from "../components/CollectionHome"
 import DiscountSection from "../components/DiscountSection"
 import Footer from "../components/Footer"
@@ -6,8 +7,10 @@ import Hero from "../components/Hero"
 import NewArrival from "../components/NewArrival"
 import NewsletterHome from "../components/NewsletterHome"
 
-
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0,0);
+}, [])
   return (
     <div>
         <Header showSearchBar={true} />

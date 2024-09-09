@@ -1,7 +1,9 @@
 import heroImg from '../assets/sneakerHero.jpg';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
+
   return (
     <div className='relative w-full min-w-full'>
       <div className='w-full'>
@@ -13,8 +15,8 @@ const Hero = () => {
         <div className='border-2 border-primaryRed w-1/2'></div>
         <p className='text-base'>Change your sneakers game this year!</p>
         <div className='flex gap-4'>
-          <Button title='shop men' />
-          <Button title='shop women' />
+          <Link to='/men'><Button  title='shop men' /></Link>
+          <Link to='/women'><Button title='shop women' /></Link>
         </div>
       </div>
     </div>

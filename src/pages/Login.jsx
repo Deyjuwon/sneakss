@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Header from '../components/Header';
 import { FcGoogle } from "react-icons/fc";
 import { auth, provider } from '../../firebaseConfig';
@@ -7,9 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import Footer from '../components/Footer';
 
+
 const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+}, [])
 
   const handleLogin = () => {
     signInWithPopup(auth, provider)

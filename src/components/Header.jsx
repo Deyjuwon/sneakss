@@ -6,6 +6,7 @@ import { UserContext } from "../../UserContext";
 import { useContext } from "react";
 import { getAuth, signOut } from "firebase/auth";
 
+
 const Header = ({ showSearchBar }) => {
   const { user, setUser } = useContext(UserContext); // Destructure setUser from context
   const navigate = useNavigate();
@@ -28,11 +29,11 @@ const Header = ({ showSearchBar }) => {
       <div className="flex justify-between gap-12 items-center w-full md:w-auto">
         <Link className="text-primaryRed text-base md:text-2xl logo" to='/'>Sneakss</Link>
         <nav className="md:flex items-center hidden gap-12">
-          <a href="#">New</a>
-          <a href="#">Men</a>
-          <a href="#">Women</a>
+          <Link to="/new">New</Link>
+          <Link to="/men">Men</Link>
+          <Link to="/women">Women</Link>
         </nav>
-        <IoCartOutline size={30} className="md:hidden" />
+        <Link to='/cart'><IoCartOutline size={30} className="md:hidden" /></Link>
       </div>
 
       {showSearchBar && (
@@ -69,7 +70,7 @@ const Header = ({ showSearchBar }) => {
             </li>
           </ul>
         )}
-        <IoCartOutline size={30} className="hidden md:block" />
+        <Link to='/cart'><IoCartOutline size={30} className="hidden md:block" /></Link>
       </div>
     </header>
   );
