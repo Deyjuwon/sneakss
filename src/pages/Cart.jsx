@@ -13,8 +13,8 @@ const Cart = () => {
   return (
     <div className="pt-32 md:pt-24 ">
       <Header showSearchBar={true} />
-      {/* <FilledCart /> */}
-      <EmptyCart />      
+      <FilledCart />
+      {/* <EmptyCart />       */}
       <div className="pt-20">
           <p className="text-[22px] font-bold px-5">You might also like</p>
           <RandomProducts />

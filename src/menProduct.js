@@ -45,7 +45,7 @@ export  const menProduct = [
         name: 'New Balance 810',
         price: 'N80,000',
         color: 'Black and white',
-        img: pro6,
+        img: pro2,
         gender: 'Men'
     },
     {
@@ -85,7 +85,7 @@ export  const menProduct = [
         name: 'Adidas Ultraboost 20',
         price: 'N80,000',
         color: 'White',
-        img: pro6,
+        img: pro3,
         gender: 'Men'
     }
 ]
