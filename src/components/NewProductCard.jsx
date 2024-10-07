@@ -10,7 +10,7 @@ const NewProductCard = ({ shoeName, shoeColor, shoeGender, shoePrice, shoeImg })
         <p>{shoeColor}</p>
         <p>{shoeGender}</p>
       </div>
-      <p className="font-bold">{shoePrice}</p>
+      <p className="font-bold">₦{shoePrice}</p>
     </div>
   );
 };

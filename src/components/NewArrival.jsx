@@ -6,13 +6,23 @@ import pro3 from '../assets/products/pro3.jpg'
 import pro6 from '../assets/products/pro6.jpg'
 import pro7 from '../assets/products/pro7.jpg'
 import pro8 from '../assets/products/pro8.jpg'
+import base from "../api/base"
+import { useState, useEffect } from "react"
 
 const NewArrival = () => {
+    const [products, setProducts] = useState([]);
+    useEffect (() => {
+        base('products').select({view: 'Grid view'}).eachPage((records, fetchNextPage) => {
+            setProducts(records);
+            fetchNextPage();
+            
+        })
+      })
   return (
     <div className="px-5 py-10">
         <h1 className="text-xl font-bold py-4">New Arrivals</h1>
         <div className="flex w-full gap-10 overflow-x-auto">
-            <NewProductCard 
+            {/* <NewProductCard 
                 shoeName='Balenciaga Track 2' 
                 shoeGender='Men' 
                 shoePrice='₦80,000' 
@@ -60,8 +70,16 @@ const NewArrival = () => {
                 shoePrice='₦80,000' 
                 shoeImg={pro7} 
                 shoeColor='Forest green and white' 
-            />
-
+            /> */}
+            {
+                products.map((product) => (
+                    <NewProductCard key={product.id} shoeName={product.fields.ProductName} 
+                    shoeGender={product.fields.Category} 
+                    shoePrice={product.fields.Price} 
+                    shoeImg={product.fields.ProductImage[0].url} 
+                    shoeColor={product.fields.Color}  />
+                ))
+            }
 
         </div>
         
