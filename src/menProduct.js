@@ -11,7 +11,7 @@ export  const menProduct = [
     {
         id: 1,
         name: 'Balenciaga Track 2',
-        price: 'N80,000',
+        price: '80,000',
         color: 'Forest green and white',
         img: pro1,
         gender: 'Men'
@@ -19,7 +19,7 @@ export  const menProduct = [
     {
         id: 2,
         name: 'New Balance 9060',
-        price: 'N80,000',
+        price: '80,000',
         color: 'Black and white',
         img: pro2,
         gender: 'Men'
@@ -27,7 +27,7 @@ export  const menProduct = [
     {
         id: 3,
         name: 'New Balance 810',
-        price: 'N80,000',
+        price: '80,000',
         color: 'Washed blue',
         img: pro3,
         gender: 'Men'
@@ -35,7 +35,7 @@ export  const menProduct = [
     {
         id: 4,
         name: 'Adidas Ultraboost 20',
-        price: 'N80,000',
+        price: '80,000',
         color: 'White',
         img: pro4,
         gender: 'Men'
@@ -43,7 +43,7 @@ export  const menProduct = [
     {
         id: 5,
         name: 'New Balance 810',
-        price: 'N80,000',
+        price: '80,000',
         color: 'Black and white',
         img: pro2,
         gender: 'Men'
@@ -51,7 +51,7 @@ export  const menProduct = [
     {
         id: 6,
         name: 'New Balance 810',
-        price: 'N80,000',
+        price: '80,000',
         color: 'Washed blue',
         img: pro7,
         gender: 'Men'
@@ -59,7 +59,7 @@ export  const menProduct = [
     {
         id: 7,
         name: 'Adidas Ultraboost 20',
-        price: 'N80,000',
+        price: '80,000',
         color: 'White',
         img: pro8,
         gender: 'Men'
@@ -67,7 +67,7 @@ export  const menProduct = [
     {
         id: 7,
         name: 'Adidas Ultraboost 20',
-        price: 'N80,000',
+        price: '80,000',
         color: 'White',
         img: pro7,
         gender: 'Men'
@@ -75,7 +75,7 @@ export  const menProduct = [
     {
         id: 7,
         name: 'Adidas Ultraboost 20',
-        price: 'N80,000',
+        price: '80,000',
         color: 'White',
         img: pro2,
         gender: 'Men'
@@ -83,7 +83,7 @@ export  const menProduct = [
     {
         id: 7,
         name: 'Adidas Ultraboost 20',
-        price: 'N80,000',
+        price: '80,000',
         color: 'White',
         img: pro3,
         gender: 'Men'
