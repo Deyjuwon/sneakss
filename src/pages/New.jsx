@@ -1,17 +1,27 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect } from "react";
+import base from "../api/base"
+import { useState, useEffect } from "react"
 import Footer from "../components/Footer";
 import Header from "../components/Header"
 import NewProductCard from "../components/NewProductCard";
-import { menProduct } from '../menProduct';
+// import { menProduct } from '../menProduct';
 import NewsletterHome from "../components/NewsletterHome";
+import Spinner from "../components/Spinner";
 
 
 
 const New = () => {
-    useEffect(() => {
-        window.scrollTo(0,0);
-    }, [])
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect (() => {
+        base('products').select({view: 'Grid view'}).eachPage((records, fetchNextPage) => {
+            setProducts(records);
+            fetchNextPage();
+            setLoading(false)
+            
+        })
+      },[])
     
   return (
     <div className="pt-32 md:pt-24 ">
@@ -23,17 +33,16 @@ const New = () => {
             </div>
 
             <div className="flex flex-wrap justify-between">
-                {
-                    menProduct.map((product) => (
-                        <div key={product.id} className="">
-                            <NewProductCard shoeName={product.name} 
-                                shoeGender={product.gender} 
-                                shoePrice={product.price} 
-                                shoeImg={product.img} 
-                                shoeColor={product.color}  />
-                        </div>
+                { loading ? <Spinner /> :
+                    products.map((product) => (
+                        <NewProductCard key={product.id} shoeName={product.fields.ProductName} 
+                        shoeGender={product.fields.Category} 
+                        shoePrice={product.fields.Price} 
+                        shoeImg={product.fields.ProductImage[0].url} 
+                        shoeColor={product.fields.Color}  />
                     ))
                 }
+
             </div>
             
         </div>
