@@ -15,6 +15,7 @@ const New = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect (() => {
+        window.scrollTo(0,0);
         base('products').select({view: 'Grid view'}).eachPage((records, fetchNextPage) => {
             setProducts(records);
             fetchNextPage();
