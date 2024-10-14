@@ -35,6 +35,7 @@ const ProductPages = () => {
   if (loading) return <Spinner />;
 
   if (error) return <p>{error}</p>;
+  console.log(product)
 
   return (
     <div>
