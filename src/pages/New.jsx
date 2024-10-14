@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Footer from "../components/Footer";
 import Header from "../components/Header"
 import NewProductCard from "../components/NewProductCard";
-// import { menProduct } from '../menProduct';
 import NewsletterHome from "../components/NewsletterHome";
 import Spinner from "../components/Spinner";
 
@@ -36,7 +35,7 @@ const New = () => {
             <div className="flex flex-wrap justify-between">
                 { loading ? <Spinner /> :
                     products.map((product) => (
-                        <NewProductCard key={product.id} shoeName={product.fields.ProductName} 
+                        <NewProductCard key={product.id} ProductID={product.fields.ProductID} shoeName={product.fields.ProductName} 
                         shoeGender={product.fields.Category} 
                         shoePrice={product.fields.Price} 
                         shoeImg={product.fields.ProductImage[0].url} 
