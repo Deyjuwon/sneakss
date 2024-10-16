@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import base from '../api/base';
 import Spinner from '../components/Spinner';
-import pro4 from '../assets/products/pro4.jpg'
 import Header from '../components/Header';
 import RandomProducts from '../components/RandomProducts';
 
