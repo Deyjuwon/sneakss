@@ -41,6 +41,7 @@ const Men = () => {
                 .map((product) => (
                     <NewProductCard
                     key={product.id}
+                    ProductID={product.fields.ProductID}
                     shoeName={product.fields.ProductName}
                     shoeGender={product.fields.Category}
                     shoePrice={product.fields.Price}

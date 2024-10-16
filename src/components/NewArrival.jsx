@@ -22,7 +22,7 @@ const NewArrival = () => {
         <div className="flex w-full gap-10 overflow-x-auto">
             { loading ? <Spinner /> :
                 products.map((product) => (
-                    <NewProductCard key={product.id} shoeName={product.fields.ProductName} 
+                    <NewProductCard key={product.id}  ProductID={product.fields.ProductID} shoeName={product.fields.ProductName} 
                     shoeGender={product.fields.Category} 
                     shoePrice={product.fields.Price} 
                     shoeImg={product.fields.ProductImage[0].url} 

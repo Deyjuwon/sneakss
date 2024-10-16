@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import base from "../api/base"
 import { useState, useEffect } from "react"
 import Footer from "../components/Footer";
