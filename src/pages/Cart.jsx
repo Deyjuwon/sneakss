@@ -19,7 +19,7 @@ const Cart = () => {
           <p className="text-[22px] font-bold px-5">You might also like</p>
           <RandomProducts />
       </div>    
-      <Footer bgColor='black' textColor='white' />
+      <Footer bgColor='222222' textColor='white' />
 
         
     </div>

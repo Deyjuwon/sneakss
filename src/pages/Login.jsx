@@ -43,7 +43,7 @@ const Login = () => {
           <p>CONTINUE WITH GOOGLE</p>
         </button>
       </div>
-      <Footer bgColor='black' textColor='white' />
+      <Footer bgColor='222222' textColor='white' />
     </div>
   );
 }

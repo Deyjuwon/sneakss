@@ -41,7 +41,7 @@ const RandomProducts = () => {
                             ProductID={product.fields.ProductID}
                             shoeName={product.fields.ProductName}
                             shoeGender={product.fields.Category}
-                            shoePrice={product.fields.Price}
+                            shoePrice={product.fields.Price.toLocaleString()}
                             shoeImg={product.fields.ProductImage[0].url}
                             shoeColor={product.fields.Color}
                         />

@@ -11,7 +11,7 @@ const NewProductCard = ({ shoeName, shoeColor, shoeGender, shoePrice, shoeImg, P
           <p>{shoeColor}</p>
           <p>{shoeGender}</p>
         </div>
-        <p className="font-bold">₦{shoePrice}</p>
+        <p className="font-bold">₦{shoePrice.toLocaleString()}</p>
       </div>
     </Link>
   );

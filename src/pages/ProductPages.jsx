@@ -65,7 +65,7 @@ const ProductPages = () => {
           <div className='w-[50%] flex flex-col gap-5'>
             <p className='text-xs'>{product.Category}</p>
             <h1 className='font-bold text-[42px] text-[#222222]'>{product.ProductName}</h1>
-            <p className='font-semibold text-[20px]'>₦{product.Price}</p>
+            <p className='font-semibold text-[20px]'>₦{product.Price.toLocaleString()}</p>
             <p className='text-base'>Color:  <span className='text-[#808080]'>{product.Color}</span></p>
             <div className='flex flex-col gap-5'>
               <p className='text-[#808080] text-sm'>Size</p>
@@ -75,7 +75,7 @@ const ProductPages = () => {
                     key={size}
                     type="button"
                     value={size}
-                    className='h-[40px] w-[60px] border border-gray-400'
+                    className='h-[40px] w-[60px] border border-gray-400 hover:bg-[#222222] hover:text-[#f7f7f7] cursor-pointer'
                   />
                 ))}
               </div>
@@ -98,7 +98,7 @@ const ProductPages = () => {
           <RandomProducts />
         </div>  
       </div>
-      <Footer bgColor='black' textColor='white' />
+      <Footer bgColor='222222' textColor='white' />
     </div>
   );
 };
