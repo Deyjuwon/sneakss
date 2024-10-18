@@ -12,6 +12,7 @@ const ProductPages = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(null); // State to track the selected size
 
   // Define size options based on product category
   const getSizeOptions = (category) => {
@@ -28,16 +29,16 @@ const ProductPages = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     // Filter or find product using fields.ProductID in Airtable
     base('products')
       .select({
-        filterByFormula: `{ProductID} = "${id}"`,  // Airtable formula to find by ProductID
+        filterByFormula: `{ProductID} = "${id}"`, // Airtable formula to find by ProductID
       })
       .firstPage()
       .then((records) => {
         if (records.length > 0) {
-          setProduct(records[0].fields);  // Assuming only one product is returned
+          setProduct(records[0].fields); // Assuming only one product is returned
         } else {
           setError('Product not found.');
         }
@@ -75,7 +76,10 @@ const ProductPages = () => {
                     key={size}
                     type="button"
                     value={size}
-                    className='h-[40px] w-[60px] border border-gray-400 hover:bg-[#222222] hover:text-[#f7f7f7] cursor-pointer'
+                    className={`h-[40px] w-[60px] border border-gray-400 hover:bg-[#222222] hover:text-[#f7f7f7] cursor-pointer ${
+                      selectedSize === size ? 'bg-[#222222] text-[#f7f7f7]' : 'bg-[#f7f7f7]'
+                    }`}
+                    onClick={() => setSelectedSize(size)} // Set the selected size on click
                   />
                 ))}
               </div>
@@ -96,7 +100,7 @@ const ProductPages = () => {
         <div className="pt-20">
           <p className="text-[22px] font-bold px-5">You might also like</p>
           <RandomProducts />
-        </div>  
+        </div>
       </div>
       <Footer bgColor='222222' textColor='white' />
     </div>
