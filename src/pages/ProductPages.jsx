@@ -57,6 +57,37 @@ const ProductPages = () => {
 
   const sizeOptions = getSizeOptions(product.Category);
 
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size.");
+      return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItem = {
+      id: product.ProductID,
+      name: product.ProductName,
+      price: product.Price,
+      image: product.ProductImage[0].url,
+      quantity,
+      size: selectedSize,
+      color: product.Color,
+    };
+
+    const existingItemIndex = cart.findIndex(item => item.id === product.ProductID && item.size === selectedSize);
+
+    if (existingItemIndex !== -1) {
+      // Update the quantity if the product already exists in the cart with the same size
+      cart[existingItemIndex].quantity += quantity;
+    } else {
+      // Add new item to cart
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Product added to cart");
+  };
+
   return (
     <div>
       <div className="pt-32 md:pt-24 ">
@@ -92,7 +123,10 @@ const ProductPages = () => {
                 <button className='cursor-pointer' onClick={() => setQuantity((prevCount) => prevCount +1)}>+</button>
               </div>
             </div>
-            <button className="mt-4 border border-gray-400 text-black h-[50px] w-[80%] flex items-center justify-center hover:text-[#f7f7f7] hover:bg-[#222222]">
+            <button 
+              className="mt-4 border border-gray-400 text-black h-[50px] w-[80%] flex items-center justify-center hover:text-[#f7f7f7] hover:bg-[#222222]"
+              onClick={handleAddToCart}
+            >
               Add to Cart
             </button>
           </div>
