@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoCartOutline, IoSearch } from "react-icons/io5";
 import { MdPersonOutline } from "react-icons/md";
 import { UserContext } from "../../UserContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
 
 const Header = ({ showSearchBar }) => {
@@ -12,18 +12,26 @@ const Header = ({ showSearchBar }) => {
   const auth = getAuth();
 
   const [showModal, setShowModal] = useState(false); // State to handle modal visibility
+  const [cartCount, setCartCount] = useState(0); // State to handle cart item count
+  const [searchQuery, setSearchQuery] = useState(''); // State to handle the search query
+
+  useEffect(() => {
+    // Retrieve cart items from localStorage and set the cart count
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartCount(cart.reduce((acc, item) => acc + item.quantity, 0));
+  }, []);
 
   function handleSignOut() {
     signOut(auth)
       .then(() => {
         // Sign-out successful, set user to null
         setUser(null);
-        navigate('/login');
-        console.log('Sign-out successful');
+        navigate("/login");
+        console.log("Sign-out successful");
       })
       .catch((error) => {
         // An error happened
-        console.error('Sign-out failed', error);
+        console.error("Sign-out failed", error);
       });
   }
 
@@ -40,10 +48,24 @@ const Header = ({ showSearchBar }) => {
     setShowModal(false); // Close modal after confirming
   }
 
+  // Function to handle search input changes
+  function handleSearchChange(event) {
+    setSearchQuery(event.target.value); // Update search query state
+  }
+
+  // Function to handle search submission
+  function handleSearchSubmit(event) {
+    event.preventDefault();
+    if (searchQuery.trim()) {
+      // Navigate to search results page with the query as a URL parameter
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
+  }
+
   return (
     <header className="text-sm font-bold flex flex-col md:flex-row justify-between items-center z-50 p-5 fixed w-full top-0 bg-white">
       <div className="flex justify-between gap-12 items-center w-full md:w-auto">
-        <Link className="text-primaryRed text-base md:text-xl logo" to='/'>
+        <Link className="text-primaryRed text-base md:text-xl logo" to="/">
           Sneakss
         </Link>
         <nav className="md:flex items-center hidden gap-12">
@@ -51,20 +73,29 @@ const Header = ({ showSearchBar }) => {
           <Link to="/men">Men</Link>
           <Link to="/women">Women</Link>
         </nav>
-        <Link to='/cart'><IoCartOutline size={30} className="md:hidden" /></Link>
+        <Link to="/cart" className="relative">
+          <IoCartOutline size={30} className="md:hidden" />
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center md:hidden justify-center">
+              {cartCount}
+            </span>
+          )}
+        </Link>
       </div>
 
       {showSearchBar && (
-        <div className="w-full mt-4 md:mt-0 md:w-auto relative">
+        <form onSubmit={handleSearchSubmit} className="w-full mt-4 md:mt-0 md:w-auto relative">
           <input
             type="text"
             placeholder="Search"
+            value={searchQuery} // Bind input to searchQuery state
+            onChange={handleSearchChange} // Update searchQuery on input change
             className="w-full md:w-64 pl-4 h-10 border border-gray-400 outline-primaryRed"
           />
-          <button className="absolute top-2 right-2">
+          <button type="submit" className="absolute top-2 right-2">
             <IoSearch size={24} />
           </button>
-        </div>
+        </form>
       )}
 
       <div className="hidden md:flex items-center gap-12">
@@ -82,15 +113,22 @@ const Header = ({ showSearchBar }) => {
               <MdPersonOutline size={30} />
             </li>
             <li>
-              <Link to='/login'>Log in</Link>
+              <Link to="/login">Log in</Link>
             </li>
             <li>|</li>
             <li>
-              <Link to='/login'>Join</Link>
+              <Link to="/login">Join</Link>
             </li>
           </ul>
         )}
-        <Link to='/cart'><IoCartOutline size={30} className="hidden md:block" /></Link>
+        <Link to="/cart" className="relative">
+          <IoCartOutline size={30} />
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {cartCount}
+            </span>
+          )}
+        </Link>
       </div>
 
       {/* Confirmation Modal */}

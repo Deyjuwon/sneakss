@@ -7,6 +7,7 @@ import Women from './pages/Women'
 import New from './pages/New'
 import Cart from './pages/Cart'
 import ProductPages from './pages/ProductPages'
+import SearchResults from './components/SearchResults'
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/new' element={<New />} />
           <Route path='/cart' element={<Cart />} /> 
           <Route path='/product/:id' element={<ProductPages />} /> 
+          <Route path='/search' element={<SearchResults />} /> 
       </Routes>
     </BrowserRouter>
     </>

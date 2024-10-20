@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const FilledCart = ({ cartItems, onRemove }) => {
   // Calculate the subtotal by summing up the prices of all cart items
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
