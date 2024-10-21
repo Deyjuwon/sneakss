@@ -33,9 +33,9 @@ const SearchResults = () => {
   }, [query]);
 
   return (
-    <div className="pt-32 md:pt-24 ">
+    <div className="pt-32 md:pt-24">
       <Header showSearchBar={true} />
-      <div className="px-5 pb-0 md:pb-24">
+      <div className="px-5 pb-0 md:pb-24 h-screen">
         <div className="flex flex-col gap-4 pb-10">
           <p className="text-sm font-light">Search Results for "{query}"</p>
           <p className="text-3xl font-bold text-[#800000]">Products Found</p>

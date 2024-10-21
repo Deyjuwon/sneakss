@@ -92,16 +92,16 @@ const ProductPages = () => {
     <div>
       <div className="pt-32 md:pt-24 ">
         <Header showSearchBar={true} />
-        <div className='w-[80%] m-auto flex gap-6 items-center pt-10'>
-          <img src={product.ProductImage[0].url} alt="" className='w-[50%] h-[520px] object-cover' />
-          <div className='w-[50%] flex flex-col gap-5'>
+        <div className='px-5 md:px-0 w-full md:w-[80%] m-auto flex gap-6 items-center pt-8 flex-col md:flex-row'>
+          <img src={product.ProductImage[0].url} alt="" className='w-full md:w-[50%] md:h-[520px] object-cover' />
+          <div className='w-full md:w-[50%] flex flex-col gap-5'>
             <p className='text-xs'>{product.Category}</p>
-            <h1 className='font-bold text-[42px] text-[#222222]'>{product.ProductName}</h1>
-            <p className='font-semibold text-[20px]'>₦{product.Price.toLocaleString()}</p>
-            <p className='text-base'>Color:  <span className='text-[#808080]'>{product.Color}</span></p>
+            <h1 className='font-bold text-[38px] md:text-[42px] text-[#222222]'>{product.ProductName}</h1>
+            <p className='font-semibold text-[18px] md:text-[20px]'>₦{product.Price.toLocaleString()}</p>
+            <p className='text-sm md:text-base'>Color:  <span className='text-[#808080]'>{product.Color}</span></p>
             <div className='flex flex-col gap-5'>
               <p className='text-[#808080] text-sm'>Size</p>
-              <div className='flex gap-5'>
+              <div className='flex flex-wrap gap-5'>
                 {sizeOptions.map((size) => (
                   <input
                     key={size}
@@ -117,14 +117,14 @@ const ProductPages = () => {
             </div>
             <div className='flex flex-col gap-5'>
               <p className='text-[#808080] text-sm'>Quantity</p>
-              <div className='text-base font-semibold border border-gray-400 w-[30%] h-[50px] flex justify-around items-center'>
+              <div className='text-base font-semibold border border-gray-400 w-[35%] h-[50px] flex justify-around items-center'>
                 <button className='cursor-pointer' onClick={() => setQuantity((prevCount) => (prevCount > 0 ? prevCount - 1 : 0))}>-</button>
                 <p>{quantity}</p>
                 <button className='cursor-pointer' onClick={() => setQuantity((prevCount) => prevCount +1)}>+</button>
               </div>
             </div>
             <button 
-              className="mt-4 border border-gray-400 text-black h-[50px] w-[80%] flex items-center justify-center hover:text-[#f7f7f7] hover:bg-[#222222]"
+              className="mt-4 border border-gray-400 text-black h-[50px] w-full md:w-[80%] flex items-center justify-center hover:text-[#f7f7f7] hover:bg-[#222222]"
               onClick={handleAddToCart}
             >
               Add to Cart

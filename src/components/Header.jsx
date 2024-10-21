@@ -5,12 +5,15 @@ import { MdPersonOutline } from "react-icons/md";
 import { UserContext } from "../../UserContext";
 import { useContext, useEffect, useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 
 const Header = ({ showSearchBar }) => {
   const { user, setUser } = useContext(UserContext); // Destructure setUser from context
   const navigate = useNavigate();
   const auth = getAuth();
 
+  const [isOpened, setIsOpened] = useState(false);
   const [showModal, setShowModal] = useState(false); // State to handle modal visibility
   const [cartCount, setCartCount] = useState(0); // State to handle cart item count
   const [searchQuery, setSearchQuery] = useState(''); // State to handle the search query
@@ -61,6 +64,9 @@ const Header = ({ showSearchBar }) => {
       navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
     }
   }
+  const handleNavLinkClick = () => {
+    setIsOpened(false);
+  };
 
   return (
     <header className="text-sm font-bold flex flex-col md:flex-row justify-between items-center z-50 p-5 fixed w-full top-0 bg-white">
@@ -73,15 +79,28 @@ const Header = ({ showSearchBar }) => {
           <Link to="/men">Men</Link>
           <Link to="/women">Women</Link>
         </nav>
-        <Link to="/cart" className="relative">
-          <IoCartOutline size={30} className="md:hidden" />
-          {cartCount > 0 && (
-            <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center md:hidden justify-center">
-              {cartCount}
-            </span>
+        <div className="flex items-center gap-3">
+            <Link to="/cart" className="relative">
+              <IoCartOutline size={30} className="md:hidden" />
+              {cartCount > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center md:hidden justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+            {isOpened ? (
+            <div className=' flex items-center justify-center h-11 w-11 md:hidden z-50'>
+              <IoMdClose className='fixed' size={20} onClick={() => setIsOpened(!isOpened)} />
+            </div>
+          ) : (
+            <div className='  md:hidden'>
+              <RxHamburgerMenu size={20}  onClick={() => setIsOpened(!isOpened)} />
+            </div>
           )}
-        </Link>
+        </div>
+        
       </div>
+      
 
       {showSearchBar && (
         <form onSubmit={handleSearchSubmit} className="w-full mt-4 md:mt-0 md:w-auto relative">
@@ -129,7 +148,23 @@ const Header = ({ showSearchBar }) => {
             </span>
           )}
         </Link>
+        
       </div>
+      
+
+
+      
+
+      {isOpened && (
+        <div className="fixed top-0 left-0 w-full h-full bg-white z-40 flex flex-col items-center pt-20 md:hidden">
+          <ul className="text-gray-400 font-medium flex flex-col gap-5">
+            <li><Link to="/new" className=" transition duration-200" onClick={handleNavLinkClick}>New</Link></li>
+            <li><Link to="/men" className=" transition duration-200" onClick={handleNavLinkClick}>Men</Link></li>
+            <li><Link to="/women" className=" transition duration-200" onClick={handleNavLinkClick}>Women</Link></li>
+            <li><Link to="/login" className=" transition duration-200" onClick={handleNavLinkClick}>Login</Link></li>
+          </ul>
+        </div>
+      )}
 
       {/* Confirmation Modal */}
       {showModal && (
