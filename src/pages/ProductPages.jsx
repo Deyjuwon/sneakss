@@ -13,6 +13,7 @@ const ProductPages = () => {
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null); // State to track the selected size
+  const [showModal, setShowModal] = useState(false); // State to handle modal visibility
 
   // Define size options based on product category
   const getSizeOptions = (category) => {
@@ -27,6 +28,13 @@ const ProductPages = () => {
         return [];
     }
   };
+
+
+  function handleModalConfirm() {
+    setShowModal(false); 
+  }
+
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,7 +93,7 @@ const ProductPages = () => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Product added to cart");
+    setShowModal(true)
   };
 
   return (
@@ -136,6 +144,22 @@ const ProductPages = () => {
           <RandomProducts />
         </div>
       </div>
+      {/* Confirmation Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <p className="text-lg font-bold mb-4">Product added to cart!</p>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleModalConfirm}
+                className="px-4 py-2 bg-green-500 text-white rounded"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <Footer bgColor='222222' textColor='white' />
     </div>
   );
