@@ -8,6 +8,7 @@ import New from './pages/New'
 import Cart from './pages/Cart'
 import ProductPages from './pages/ProductPages'
 import SearchResults from './components/SearchResults'
+import GetHelp from './pages/GetHelp'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/cart' element={<Cart />} /> 
           <Route path='/product/:id' element={<ProductPages />} /> 
           <Route path='/search' element={<SearchResults />} /> 
+          <Route path='/get-help' element={<GetHelp  />} /> 
       </Routes>
     </BrowserRouter>
     </>

@@ -3,8 +3,14 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Footer = ({bgColor, textColor}) => {
+    
+    
+    
+    const navigate = useNavigate();
+
   return (
     <footer className={`text-xs md:text-sm  flex py-12  justify-around bg-[#${bgColor}] text-${textColor}  flex-wrap`}>
         <div className="w-1/2 lg:w-auto  flex flex-col gap-5  items-center">
@@ -22,7 +28,7 @@ const Footer = ({bgColor, textColor}) => {
                 <a href="">Shipping And Returns</a>
                 <a href="">Order Tracking</a>
                 <a href="">Order Cancellation</a>
-                <a href="">Get Help</a>
+                <a href="" onClick={() => navigate('/get-help')} >Get Help</a>
             </div>
             
 
