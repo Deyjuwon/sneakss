@@ -69,7 +69,7 @@ const Header = ({ showSearchBar }) => {
   };
 
   return (
-    <header className="text-sm font-bold flex flex-col md:flex-row justify-between items-center z-50 p-5 fixed w-full top-0 bg-white">
+    <header className="text-sm font-bold flex flex-col md:flex-row justify-between items-center z-10 p-5 fixed w-full top-0 bg-white">
       <div className="flex justify-between gap-12 items-center w-full md:w-auto">
         <Link className="text-primaryRed text-base md:text-xl logo" to="/">
           Sneakss

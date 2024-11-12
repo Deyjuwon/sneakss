@@ -6,6 +6,7 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import NewArrival from "../components/NewArrival"
 import NewsletterHome from "../components/NewsletterHome"
+import Newsletter from "../components/Newsletter"
 
 const Home = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Home = () => {
         <NewArrival />
         <NewsletterHome />
         <Footer bgColor='white' textColor='black' />
+        <Newsletter />
         
     </div>
   )
