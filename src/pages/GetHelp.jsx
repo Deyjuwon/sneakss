@@ -12,15 +12,15 @@ const GetHelp = () => {
   return (
     <div className="pt-32 md:pt-24">
       <Header showSearchBar={true} />
-      <div className="flex flex-col justify-center items-center gap-10 pt-10">
+      <div className="flex flex-col justify-center items-center gap-10 pt-10 px-5">
         <p className="text-3xl font-semibold">GET HELP</p>
-        <input className="pl-4 h-20 w-[30%] border border-gray-400 rounded-xl" type="text" placeholder="What can we help you with?" />
+        <input className="pl-4 h-14 text-xs md:text-sm md:h-20 w-full md:w-[50%] border border-gray-400 rounded-xl" type="text" placeholder="What can we help you with?" />
       </div>
       <div className="pt-32  px-5">
-          <p className="text-2xl font-medium">Contact Us</p>
-          <p className="pb-5">Wait times may be longer than usual due to high contact volume. Thanks for your patience.</p>
+          <p className="text-xl md:text-2xl font-medium">Contact Us</p>
+          <p className="text-xs md:text-sm pb-5">Wait times may be longer than usual due to high contact volume. Thanks for your patience.</p>
           <hr />
-          <div className="flex justify-around items-center pb-20 pt-4">
+          <div className="flex flex-col gap-10 md:flex-row justify-around items-center pb-20 pt-4">
             <div className="flex flex-col items-center gap-3">
               <IoChatboxEllipsesOutline size={50} />
               <p>Chat with us</p>
