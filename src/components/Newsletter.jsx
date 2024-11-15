@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 const Newsletter = ({ close }) => {
   return (
     <div
-      className="h-dvh w-[40%] bg-[#f7f7f7] fixed top-0 right-0 z-20 flex flex-col gap-5 px-14 transition-all duration-1000 ease-in-out text-[#222222]"
+      className="h-dvh w-full md:w-[40%] bg-[#f7f7f7] fixed top-0 right-0 z-20 flex flex-col gap-5 px-14 transition-all duration-1000 ease-in-out text-[#222222]"
     >
       <div className="pt-10 flex justify-end">
         <div
