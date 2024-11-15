@@ -22,7 +22,7 @@ const Home = () => {
         <NewArrival />
         <NewsletterHome />
         <Footer bgColor='white' textColor='black' />
-        <Newsletter />
+        
         
     </div>
   )

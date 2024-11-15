@@ -1,19 +1,14 @@
-import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-const Newsletter = () => {
-  const [isOpened, setIsOpened] = useState(true);
-
+const Newsletter = ({ close }) => {
   return (
     <div
-      className={`h-dvh w-[40%] bg-[#f7f7f7] fixed top-0 z-20 flex flex-col gap-5 px-14 transition-all duration-1000 ease-in-out ${
-        isOpened ? "right-0" : "-right-[1500px]"
-      }`}
+      className="h-dvh w-[40%] bg-[#f7f7f7] fixed top-0 right-0 z-20 flex flex-col gap-5 px-14 transition-all duration-1000 ease-in-out text-[#222222]"
     >
       <div className="pt-10 flex justify-end">
         <div
           className="rounded-full bg-[#222222] h-10 w-10 flex justify-center items-center cursor-pointer"
-          onClick={() => setIsOpened(!isOpened)}
+          onClick={close}
         >
           <IoMdClose size={25} color="white" />
         </div>
@@ -29,8 +24,8 @@ const Newsletter = () => {
           By clicking “CREATE MY PROFILE”, you confirm that you have
           acknowledged our Privacy Policy and Terms of Use, and would like to
           receive updates about Sneakss new activities, exclusive products,
-          tailored services and to have a personalised client experience based
-          on your interests, and that you want to create your Sneakss profile.
+          tailored services, and to have a personalised client experience based
+          on your interests.
         </p>
         <input
           type="text"
