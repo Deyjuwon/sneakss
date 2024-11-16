@@ -20,7 +20,7 @@ const GetHelp = () => {
           <p className="text-xl md:text-2xl font-medium">Contact Us</p>
           <p className="text-xs md:text-sm pb-5">Wait times may be longer than usual due to high contact volume. Thanks for your patience.</p>
           <hr />
-          <div className="flex flex-col gap-10 md:flex-row justify-around items-center pb-20 pt-4">
+          <div className="flex flex-col gap-10 md:flex-row justify-around items-center pb-20 pt-4 text-xs md:text-sm">
             <div className="flex flex-col items-center gap-3">
               <IoChatboxEllipsesOutline size={50} />
               <p>Chat with us</p>
@@ -32,13 +32,13 @@ const GetHelp = () => {
             </div>
             </div>
 
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 ">
               <FiPhoneCall size={50} />
               <p>Call us</p>
               <p>+234 9090 883663, +234 9099 9444999</p>
             </div>
 
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 ">
               <FaLocationDot size={50} />
               <p>Find a store</p>
               <a href="" className="underline">see stores</a>
