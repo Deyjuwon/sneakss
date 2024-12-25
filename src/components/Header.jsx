@@ -109,7 +109,7 @@ const Header = ({ showSearchBar }) => {
             placeholder="Search"
             value={searchQuery} // Bind input to searchQuery state
             onChange={handleSearchChange} // Update searchQuery on input change
-            className="w-full md:w-64 pl-4 h-10 border border-gray-400 outline-primaryRed"
+            className="w-full md:w-64 pl-4 h-10 border box-border  border-gray-400 outline-none"
           />
           <button type="submit" className="absolute top-2 right-2">
             <IoSearch size={24} />
