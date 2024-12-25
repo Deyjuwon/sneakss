@@ -16,29 +16,32 @@ const FilledCart = ({ cartItems, onRemove }) => {
                 <div className="text-sm flex flex-col justify-between">
                   <div className="flex flex-col gap-1">
                     <p className="font-bold pb-2">{item.name}</p>
+                    
                     <p>{item.color}</p>
                     <p>Size {item.size}</p>
                     <p>Quantity {item.quantity}</p>
+                     
                   </div>
-                  <div>
+                  <div className="flex justify-between">
                     <p
                       className="underline cursor-pointer"
                       onClick={() => onRemove(item.id)} // Call the onRemove function
                     >
                       Remove
                     </p>
+                    <p className="block md:hidden font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
               <div>
-                <p className="font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
+                <p className="hidden md:block font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="border border-[#800000] h-[500px] w-[40%] px-5 text-sm">
+      <div className="border border-[#800000] h-[500px] w-full md:w-[40%] px-5 text-sm">
         <p className="text-xl font-bold pt-7 pb-14">Order Summary</p>
         <div className="flex flex-col gap-10">
           <div className="flex justify-between">
