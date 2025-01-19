@@ -8,7 +8,7 @@ const FilledCart = ({ cartItems, onRemove }) => {
       <div className="w-full md:w-1/2">
         <h1 className="font-bold text-[22px]">Cart</h1>
         
-        <div className="pt-14 flex flex-col gap-10">
+        <div className="pt-10 flex flex-col gap-10">
           {cartItems.map((item) => (
             <div className="flex justify-between" key={item.id}>
               <div className="flex gap-4">
@@ -22,19 +22,18 @@ const FilledCart = ({ cartItems, onRemove }) => {
                     <p>Quantity {item.quantity}</p>
                      
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex">
                     <p
                       className="underline cursor-pointer"
                       onClick={() => onRemove(item.id)} // Call the onRemove function
                     >
                       Remove
                     </p>
-                    <p className="block md:hidden font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
               <div>
-                <p className="hidden md:block font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
+                <p className=" block font-bold text-sm">₦{(item.price * item.quantity).toLocaleString()}</p>
               </div>
             </div>
           ))}
