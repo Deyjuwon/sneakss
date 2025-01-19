@@ -32,8 +32,8 @@ const Newsletter = ({ close }) => {
           placeholder="Email address"
           className="outline-none h-12 w-full bg-[#f7f7f7] border-b-2 border-gray-400 text-sm text-gray-700 placeholder-gray-600"
         />
-        <button className="bg-[#800000] h-14 mt-10 w-[40%] text-sm text-[#f7f7f7]">
-          CREATE MY PROFILE
+        <button className="bg-[#800000] h-14 w-[40%] mt-10 text-xs text-[#f7f7f7]">
+          CREATE MY <br /> PROFILE
         </button>
       </div>
     </div>
