@@ -34,9 +34,9 @@ const Login = () => {
     <div className='h-screen flex flex-col justify-between pt-40'>
       <Header showSearchBar={false} />
       <div className='flex flex-col gap-16 justify-center items-center'>
-        <p className='text-[40px] font-normal'>MY SNEAKS ACCOUNT</p>
+        <p className='text-[24px] lg:text-[40px] font-normal'>MY SNEAKS ACCOUNT</p>
         <button 
-          className='h-20 w-[400px] bg-[#ff5f5f7] text-[#800000] border border-[#800000] 
+          className='h-20 w-[80%] lg:w-[400px] bg-[#ff5f5f7] text-[#800000] border border-[#800000] 
           text-base font-semibold hover:bg-[#800000] hover:text-[#f5f5f7] flex justify-center items-center gap-4' 
           onClick={handleLogin}>
           <FcGoogle size={25} />
