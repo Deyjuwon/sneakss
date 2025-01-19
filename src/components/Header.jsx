@@ -74,7 +74,7 @@ const Header = ({ showSearchBar }) => {
         <Link className="text-primaryRed text-base md:text-xl logo" to="/">
           Sneakss
         </Link>
-        <nav className="md:flex items-center hidden gap-12">
+        <nav className="lg:flex items-center hidden gap-12">
           <Link to="/new">New</Link>
           <Link to="/men">Men</Link>
           <Link to="/women">Women</Link>

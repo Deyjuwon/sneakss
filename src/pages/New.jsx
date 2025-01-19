@@ -31,7 +31,7 @@ const New = () => {
                 <p className="text-3xl font-bold text-[#800000]">Latest Sneakers</p>
             </div>
 
-            <div className="flex flex-wrap justify-between">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-5">
                 { loading ? <Spinner /> :
                     products.map((product) => (
                         <NewProductCard key={product.id} ProductID={product.fields.ProductID} shoeName={product.fields.ProductName} 

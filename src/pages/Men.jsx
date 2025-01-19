@@ -34,7 +34,7 @@ const Men = () => {
                 <p className="text-3xl font-bold text-[#800000]">Men's Sneakers</p>
             </div>
 
-            <div className="flex flex-wrap justify-between">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-5">
             { loading ? <Spinner /> : products.filter((product) => 
                     product.fields.Category === 'Men' || product.fields.Category === 'Unisex'
                 )
